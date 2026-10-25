@@ -1,0 +1,418 @@
+[gd_scene format=3 uid="uid://c8bg4iu8i6yhh"]
+
+[ext_resource type="Texture2D" uid="uid://k8m8olf862md" path="res://Assets/Textures/Bg.png" id="1_bo1nx"]
+[ext_resource type="FontFile" uid="uid://cqax8tum5b6mb" path="res://Assets/Fonts/pixel_font.ttf" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://c8i08tvk1s3i8" path="res://Scripts/main.gd" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://qet1tfjqc86l" path="res://Scenes/player.tscn" id="3_344ge"]
+[ext_resource type="Script" uid="uid://cds22qhb2js3v" path="res://Scripts/robot.gd" id="4_21xkr"]
+[ext_resource type="Script" uid="uid://bflk7km14f5u2" path="res://Scripts/ball.gd" id="4_kry3j"]
+[ext_resource type="AudioStream" uid="uid://stqs30lgj3oq" path="res://Assets/SFX/Hit.mp3" id="8_344ge"]
+[ext_resource type="AudioStream" uid="uid://di4k1jn2318mx" path="res://Assets/SFX/Goal.mp3" id="9_ynf5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(20, 120.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_a43kq"]
+offsets = PackedFloat32Array(0, 0.04819277, 0.61445785)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.70980394, 0, 1, 0.35686275, 0.35686275, 0.35686275, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fsm6c"]
+gradient = SubResource("Gradient_a43kq")
+fill = 1
+fill_from = Vector2(0.5173913, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn0t7"]
+size = Vector2(1082, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f8o3"]
+size = Vector2(1098, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr0ht"]
+size = Vector2(35, 467)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsm6c"]
+size = Vector2(35, 134.42691)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7sgy"]
+size = Vector2(35, 43.76298)
+
+[sub_resource type="Animation" id="Animation_ynf5e"]
+resource_name = "Goal"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.8509804, 0, 1), Color(1, 0, 0, 1), Color(1, 0.8509804, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect3:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.8509804, 0, 1), Color(1, 0, 0, 1), Color(1, 0.8509804, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.8509804, 0, 1), Color(1, 0, 0, 1), Color(1, 0.8509804, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hptm8"]
+_data = {
+&"Goal": SubResource("Animation_ynf5e")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1esiv"]
+size = Vector2(34, 474.2367)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nuvas"]
+size = Vector2(34.13562, 65.80177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcafp"]
+size = Vector2(34, 103.3766)
+
+[node name="Main" type="Sprite2D" unique_id=292818743]
+texture_filter = 1
+texture = ExtResource("1_bo1nx")
+centered = false
+script = ExtResource("2_jjvhh")
+
+[node name="Player" parent="." unique_id=845928572 instance=ExtResource("3_344ge")]
+position = Vector2(50, 324)
+
+[node name="Robot" type="StaticBody2D" parent="." unique_id=851100549]
+position = Vector2(1060, 324)
+script = ExtResource("4_21xkr")
+
+[node name="ColorRect" type="ColorRect" parent="Robot" unique_id=577833348]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Robot" unique_id=1723400297]
+position = Vector2(10, 0.25)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=1584650751]
+position = Vector2(576, 324)
+collision_mask = 3
+script = ExtResource("4_kry3j")
+
+[node name="ColorRect" type="ColorRect" parent="Ball" unique_id=927355735]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=991548278]
+shape = SubResource("RectangleShape2D_riqys")
+
+[node name="Map" type="Node2D" parent="." unique_id=81400212]
+
+[node name="Walls" type="Node2D" parent="Map" unique_id=873678380]
+
+[node name="ColorRect" type="ColorRect" parent="Map/Walls" unique_id=1072932698]
+offset_left = -47.000004
+offset_top = -209.00002
+offset_right = 129.7804
+offset_bottom = 170.99998
+rotation = 0.52883476
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map/Walls" unique_id=1036398029]
+offset_left = -166.0
+offset_top = 30.0
+offset_right = 10.7803955
+offset_bottom = 735.0
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map/Walls" unique_id=203150580]
+offset_left = -185.0
+offset_top = 378.0
+offset_right = -8.2196045
+offset_bottom = 758.0
+rotation = -0.13264503
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Map/Walls" unique_id=1626185688]
+offset_left = 1349.0
+offset_top = 166.0
+offset_right = 1525.7804
+offset_bottom = 546.0
+rotation = -3.440044
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Map/Walls" unique_id=584822508]
+offset_left = 1332.0
+offset_top = 708.0
+offset_right = 1508.7804
+offset_bottom = 1413.0
+rotation = -3.174754
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Map/Walls" unique_id=1973550019]
+offset_left = 1271.0001
+offset_top = 807.0
+offset_right = 1447.7805
+offset_bottom = 1187.0
+rotation = -2.9197786
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Map/Walls" unique_id=2100260903]
+offset_left = -247.0
+offset_top = 643.0
+offset_right = 1401.0
+offset_bottom = 760.0
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Map/Walls" unique_id=1386691528]
+offset_left = -251.0
+offset_top = -113.0
+offset_right = 1397.0
+offset_bottom = 4.0
+color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="Lanterne" type="Control" parent="Map" unique_id=27946615]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="01" type="Control" parent="Map/Lanterne" unique_id=984313464]
+anchors_preset = 0
+offset_left = -100.215
+offset_top = -53.03
+offset_right = -60.214996
+offset_bottom = -13.029999
+
+[node name="ColorRect" type="ColorRect" parent="Map/Lanterne/01" unique_id=320816313]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 57.0
+offset_right = 256.0
+offset_bottom = 70.0
+color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map/Lanterne/01" unique_id=1284033489]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 69.0
+offset_right = 260.0
+offset_bottom = 84.0
+color = Color(0.17857203, 0.09842054, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map/Lanterne/01" unique_id=1229893498]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 72.0
+offset_right = 257.0
+offset_bottom = 81.0
+color = Color(0.96862745, 0.627451, 0.023529412, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Map/Lanterne/01" unique_id=1478894280]
+position = Vector2(250, 78.000015)
+rotation = -0.49741885
+scale = Vector2(2.6718752, 2.1145544)
+texture = SubResource("GradientTexture2D_fsm6c")
+
+[node name="02" type="Control" parent="Map/Lanterne" unique_id=357788313]
+anchors_preset = 0
+offset_left = 493.435
+offset_top = -53.105
+offset_right = 533.43567
+offset_bottom = -13.105
+
+[node name="ColorRect" type="ColorRect" parent="Map/Lanterne/02" unique_id=656739997]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 57.0
+offset_right = 256.0
+offset_bottom = 70.0
+color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map/Lanterne/02" unique_id=1585495146]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 69.0
+offset_right = 260.0
+offset_bottom = 84.0
+color = Color(0.17857203, 0.09842054, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map/Lanterne/02" unique_id=1087590868]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 72.0
+offset_right = 257.0
+offset_bottom = 81.0
+color = Color(0.96862745, 0.627451, 0.023529412, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Map/Lanterne/02" unique_id=1156049726]
+position = Vector2(250, 78.000015)
+rotation = -0.49741885
+scale = Vector2(2.6718752, 2.1145544)
+texture = SubResource("GradientTexture2D_fsm6c")
+
+[node name="Borders" type="StaticBody2D" parent="." unique_id=1681322461]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders" unique_id=2102343671]
+position = Vector2(574, -13)
+shape = SubResource("RectangleShape2D_sn0t7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders" unique_id=372620564]
+position = Vector2(578, 662.5)
+shape = SubResource("RectangleShape2D_6f8o3")
+
+[node name="ScoreLeft" type="Area2D" parent="." unique_id=908962858]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreLeft" unique_id=601378496]
+position = Vector2(-6.5, 275.5)
+shape = SubResource("RectangleShape2D_qr0ht")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ScoreLeft" unique_id=1338105884]
+position = Vector2(2.30512, 578.351)
+rotation = -0.13264503
+shape = SubResource("RectangleShape2D_fsm6c")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScoreLeft" unique_id=167803494]
+position = Vector2(7.260331, 14.48342)
+rotation = 0.52883476
+shape = SubResource("RectangleShape2D_s7sgy")
+
+[node name="ColorRect" type="ColorRect" parent="ScoreLeft" unique_id=998129159]
+offset_left = 9.0
+offset_top = 42.0
+offset_right = 11.5
+offset_bottom = 509.0
+color = Color(1, 0.8509804, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ScoreLeft" unique_id=255331676]
+offset_left = 31.222107
+offset_top = 2.7075174
+offset_right = 33.722107
+offset_bottom = 47.789608
+rotation = 0.52883476
+color = Color(1, 0.8509804, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScoreLeft" unique_id=244714424]
+offset_left = 8.999996
+offset_top = 509.0
+offset_right = 11.499996
+offset_bottom = 644.40564
+rotation = -0.13264503
+color = Color(1, 0.8509804, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreLeft" unique_id=211542271]
+libraries/ = SubResource("AnimationLibrary_hptm8")
+
+[node name="ScoreRight" type="Area2D" parent="." unique_id=1863540309]
+position = Vector2(-33.48, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreRight" unique_id=1980166204]
+position = Vector2(1191.9161, 304.00214)
+rotation = 3.1084313
+shape = SubResource("RectangleShape2D_1esiv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ScoreRight" unique_id=966569962]
+position = Vector2(1173.7823, 30.94549)
+rotation = 2.8431413
+shape = SubResource("RectangleShape2D_nuvas")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScoreRight" unique_id=2029542660]
+position = Vector2(1187.4598, 595.7152)
+rotation = -2.919936
+shape = SubResource("RectangleShape2D_jcafp")
+
+[node name="ColorRect" type="ColorRect" parent="ScoreRight" unique_id=1088219763]
+offset_left = 1185.4939
+offset_top = 541.42004
+offset_right = 1187.9939
+offset_bottom = 1015.1862
+rotation = -3.174754
+color = Color(1, 0.8509804, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScoreRight" unique_id=1686700070]
+offset_left = 1169.9459
+offset_top = 67.95165
+offset_right = 1172.4459
+offset_bottom = 135.79544
+rotation = -3.440044
+color = Color(1, 0.8509804, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ScoreRight" unique_id=454468619]
+offset_left = 1162.5646
+offset_top = 643.62494
+offset_right = 1165.0646
+offset_bottom = 748.51984
+rotation = -2.9197786
+color = Color(1, 0.8509804, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreRight" unique_id=1208569842]
+libraries/ = SubResource("AnimationLibrary_hptm8")
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=1232617909]
+
+[node name="CenterContainer" type="CenterContainer" parent="Hud" unique_id=498095666]
+custom_minimum_size = Vector2(0, 90)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/CenterContainer" unique_id=1459580855]
+layout_mode = 2
+theme_override_constants/separation = 576
+
+[node name="Left" type="Label" parent="Hud/CenterContainer/HBoxContainer" unique_id=1489418054]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8gbba")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Right" type="Label" parent="Hud/CenterContainer/HBoxContainer" unique_id=1886322115]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8gbba")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="BallTimer" type="Timer" parent="." unique_id=1010083556]
+one_shot = true
+autostart = true
+
+[node name="SFX_hit" type="AudioStreamPlayer2D" parent="." unique_id=44239905]
+stream = ExtResource("8_344ge")
+bus = &"SFX"
+
+[node name="SFX_goal" type="AudioStreamPlayer2D" parent="." unique_id=310612526]
+stream = ExtResource("9_ynf5e")
+bus = &"SFX"
+
+[connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
+[connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
