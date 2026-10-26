@@ -144,10 +144,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 45.0
-expand_margin_top = 3.0
-expand_margin_right = 45.0
-expand_margin_bottom = 3.0
 
 [node name="StartMenu" type="Control" unique_id=2074906224]
 layout_mode = 3
@@ -237,7 +233,7 @@ theme_override_styles/normal = ExtResource("3_a43kq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_626he")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8u0lp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mmtdb")
-text = "START PLAYING"
+text = "START GAME"
 
 [node name="OPTIONS" type="Button" parent="MainMenu/MainMenu/MainButtons/VBoxContainer" unique_id=1986613349]
 layout_mode = 2
@@ -478,7 +474,7 @@ offset_right = 525.037
 offset_bottom = 134.17519
 rotation = -0.61496466
 scale = Vector2(0.83, 6.919)
-color = Color(0.03024185, 0.06854601, 0.2732043, 1)
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="OtherBackground/Cave/02" unique_id=1553773248]
 layout_mode = 0
@@ -596,7 +592,7 @@ offset_right = 509.03696
 offset_bottom = 118.17518
 rotation = -0.61496466
 scale = Vector2(0.83, 6.919)
-color = Color(0.014258867, 0.03292021, 0.18216136, 1)
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="OtherBackground/Cave/03" unique_id=160424661]
 layout_mode = 0
@@ -714,7 +710,7 @@ offset_right = 492.037
 offset_bottom = 104.17521
 rotation = -0.61496466
 scale = Vector2(0.83, 6.919)
-color = Color(0.006950216, 0.013902808, 0.112650715, 1)
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="OtherBackground/Cave/04" unique_id=104627083]
 layout_mode = 0
@@ -1199,62 +1195,62 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_2r0jt")
 selected = 0
 item_count = 3
-popup/item_0/text = "Full Screen"
+popup/item_0/text = "Windowed"
 popup/item_0/id = 0
-popup/item_1/text = "Windowed"
+popup/item_1/text = "Maximized"
 popup/item_1/id = 1
-popup/item_2/text = "Maximazed"
+popup/item_2/text = "FullScreen"
 popup/item_2/id = 2
 
-[node name="Options" type="PanelContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer" unique_id=1338268844]
+[node name="ControlsOptions" type="PanelContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer" unique_id=1338268844]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6f8o3")
 
-[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options" unique_id=144927719]
+[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions" unique_id=144927719]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer" unique_id=1909187626]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer" unique_id=1909187626]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer" unique_id=69624768]
+[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer" unique_id=69624768]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Controls Options"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer" unique_id=1497423402]
+[node name="HSeparator2" type="HSeparator" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer" unique_id=1497423402]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_jyycw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer" unique_id=1731624325]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer" unique_id=1731624325]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Up" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer/VBoxContainer" unique_id=801162001]
+[node name="Up" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer/VBoxContainer" unique_id=801162001]
 layout_mode = 2
-theme_override_constants/separation = 61
+theme_override_constants/separation = 203
 
-[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer/VBoxContainer/Up" unique_id=1506809446]
+[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer/VBoxContainer/Up" unique_id=1506809446]
 layout_mode = 2
-text = "Button pour monter :"
+text = "Up :"
 
-[node name="Button" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer/VBoxContainer/Up" unique_id=2079757272]
+[node name="Button" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer/VBoxContainer/Up" unique_id=2079757272]
 custom_minimum_size = Vector2(171, 29)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xvofd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_a43kq")
 text = "Z"
 
-[node name="Down" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1149167682]
+[node name="Down" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1149167682]
 layout_mode = 2
-theme_override_constants/separation = 38
+theme_override_constants/separation = 180
 
-[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer/VBoxContainer/Down" unique_id=1027273277]
+[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer/VBoxContainer/Down" unique_id=1027273277]
 layout_mode = 2
-text = "Button pour descendre :"
+text = "Down :"
 
-[node name="Button" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/Options/MarginContainer/VBoxContainer/VBoxContainer/Down" unique_id=2030299228]
+[node name="Button" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/MarginContainer/VBoxContainer/VBoxContainer/Down" unique_id=2030299228]
 custom_minimum_size = Vector2(171, 29)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xvofd")
@@ -1288,4 +1284,5 @@ text = "BACK"
 [connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/GLOBAL/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/GLOBAL/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/AudioControl" method="_on_value_changed"]
+[connection signal="item_selected" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/WindowOptions/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="OptionPanel/BACKButton/BACK" to="." method="_on_back_pressed"]

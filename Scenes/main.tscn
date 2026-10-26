@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c8bg4iu8i6yhh"]
 
 [ext_resource type="Texture2D" uid="uid://k8m8olf862md" path="res://Assets/Textures/Bg.png" id="1_bo1nx"]
-[ext_resource type="FontFile" uid="uid://cqax8tum5b6mb" path="res://Assets/Fonts/pixel_font.ttf" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://c8i08tvk1s3i8" path="res://Scripts/main.gd" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://qet1tfjqc86l" path="res://Scenes/player.tscn" id="3_344ge"]
 [ext_resource type="Script" uid="uid://cds22qhb2js3v" path="res://Scripts/robot.gd" id="4_21xkr"]
 [ext_resource type="Script" uid="uid://bflk7km14f5u2" path="res://Scripts/ball.gd" id="4_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bmed41fkbopnt" path="res://Scenes/hud.tscn" id="6_344ge"]
 [ext_resource type="AudioStream" uid="uid://stqs30lgj3oq" path="res://Assets/SFX/Hit.mp3" id="8_344ge"]
 [ext_resource type="AudioStream" uid="uid://di4k1jn2318mx" path="res://Assets/SFX/Goal.mp3" id="9_ynf5e"]
 
@@ -138,7 +138,14 @@ shape = SubResource("RectangleShape2D_riqys")
 
 [node name="Walls" type="Node2D" parent="Map" unique_id=873678380]
 
-[node name="ColorRect" type="ColorRect" parent="Map/Walls" unique_id=1072932698]
+[node name="01" type="Control" parent="Map/Walls" unique_id=952388425]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Map/Walls/01" unique_id=1072932698]
+layout_mode = 0
 offset_left = -47.000004
 offset_top = -209.00002
 offset_right = 129.7804
@@ -146,14 +153,16 @@ offset_bottom = 170.99998
 rotation = 0.52883476
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Map/Walls" unique_id=1036398029]
+[node name="ColorRect2" type="ColorRect" parent="Map/Walls/01" unique_id=1036398029]
+layout_mode = 0
 offset_left = -166.0
 offset_top = 30.0
 offset_right = 10.7803955
 offset_bottom = 735.0
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="Map/Walls" unique_id=203150580]
+[node name="ColorRect3" type="ColorRect" parent="Map/Walls/01" unique_id=203150580]
+layout_mode = 0
 offset_left = -185.0
 offset_top = 378.0
 offset_right = -8.2196045
@@ -161,7 +170,8 @@ offset_bottom = 758.0
 rotation = -0.13264503
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="Map/Walls" unique_id=1626185688]
+[node name="ColorRect4" type="ColorRect" parent="Map/Walls/01" unique_id=1626185688]
+layout_mode = 0
 offset_left = 1349.0
 offset_top = 166.0
 offset_right = 1525.7804
@@ -169,7 +179,8 @@ offset_bottom = 546.0
 rotation = -3.440044
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="Map/Walls" unique_id=584822508]
+[node name="ColorRect5" type="ColorRect" parent="Map/Walls/01" unique_id=584822508]
+layout_mode = 0
 offset_left = 1332.0
 offset_top = 708.0
 offset_right = 1508.7804
@@ -177,7 +188,8 @@ offset_bottom = 1413.0
 rotation = -3.174754
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
 
-[node name="ColorRect6" type="ColorRect" parent="Map/Walls" unique_id=1973550019]
+[node name="ColorRect6" type="ColorRect" parent="Map/Walls/01" unique_id=1973550019]
+layout_mode = 0
 offset_left = 1271.0001
 offset_top = 807.0
 offset_right = 1447.7805
@@ -185,19 +197,321 @@ offset_bottom = 1187.0
 rotation = -2.9197786
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
 
-[node name="ColorRect7" type="ColorRect" parent="Map/Walls" unique_id=2100260903]
+[node name="ColorRect7" type="ColorRect" parent="Map/Walls/01" unique_id=2100260903]
+layout_mode = 0
 offset_left = -247.0
 offset_top = 643.0
 offset_right = 1401.0
 offset_bottom = 760.0
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
 
-[node name="ColorRect8" type="ColorRect" parent="Map/Walls" unique_id=1386691528]
+[node name="ColorRect8" type="ColorRect" parent="Map/Walls/01" unique_id=1386691528]
+layout_mode = 0
 offset_left = -251.0
 offset_top = -113.0
 offset_right = 1397.0
 offset_bottom = 4.0
 color = Color(0.047058824, 0.09411765, 0.34117648, 1)
+
+[node name="02" type="Control" parent="Map/Walls" unique_id=1703392751]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Map/Walls/02" unique_id=781112295]
+layout_mode = 0
+offset_left = -58.999996
+offset_top = -216.00002
+offset_right = 117.780396
+offset_bottom = 163.99998
+rotation = 0.52883476
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map/Walls/02" unique_id=298965348]
+layout_mode = 0
+offset_left = -171.0
+offset_top = 17.0
+offset_right = 5.7803955
+offset_bottom = 722.0
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map/Walls/02" unique_id=1425192272]
+layout_mode = 0
+offset_left = -192.0
+offset_top = 383.0
+offset_right = -15.2196045
+offset_bottom = 763.0
+rotation = -0.13264503
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Map/Walls/02" unique_id=756784805]
+layout_mode = 0
+offset_left = 1353.9999
+offset_top = 163.99994
+offset_right = 1530.7803
+offset_bottom = 543.99994
+rotation = -3.440044
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Map/Walls/02" unique_id=948894084]
+layout_mode = 0
+offset_left = 1335.0
+offset_top = 706.0
+offset_right = 1511.7804
+offset_bottom = 1411.0
+rotation = -3.174754
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Map/Walls/02" unique_id=1022258204]
+layout_mode = 0
+offset_left = 1284.0001
+offset_top = 812.0
+offset_right = 1460.7805
+offset_bottom = 1192.0
+rotation = -2.9197786
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Map/Walls/02" unique_id=1119023552]
+layout_mode = 0
+offset_left = -241.0
+offset_top = 645.0
+offset_right = 1407.0
+offset_bottom = 762.0
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Map/Walls/02" unique_id=32732156]
+layout_mode = 0
+offset_left = -247.0
+offset_top = -115.0
+offset_right = 1401.0
+offset_bottom = 2.0
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
+
+[node name="03" type="Control" parent="Map/Walls" unique_id=1051176717]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Map/Walls/03" unique_id=821221361]
+layout_mode = 0
+offset_left = -63.27949
+offset_top = -217.0
+offset_right = 113.5009
+offset_bottom = 163.0
+rotation = 0.52883476
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map/Walls/03" unique_id=1898737050]
+layout_mode = 0
+offset_left = -175.2795
+offset_top = 16.000015
+offset_right = 1.5009003
+offset_bottom = 721.0
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map/Walls/03" unique_id=1759316671]
+layout_mode = 0
+offset_left = -196.2795
+offset_top = 382.0
+offset_right = -19.4991
+offset_bottom = 762.0
+rotation = -0.13264503
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Map/Walls/03" unique_id=1479777714]
+layout_mode = 0
+offset_left = 1353.0
+offset_top = 162.00005
+offset_right = 1529.7804
+offset_bottom = 542.00006
+rotation = -3.440044
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Map/Walls/03" unique_id=1520190391]
+layout_mode = 0
+offset_left = 1334.0
+offset_top = 703.99994
+offset_right = 1510.7804
+offset_bottom = 1409.0
+rotation = -3.174754
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Map/Walls/03" unique_id=839500931]
+layout_mode = 0
+offset_left = 1279.7206
+offset_top = 811.0
+offset_right = 1456.501
+offset_bottom = 1191.0
+rotation = -2.9197786
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Map/Walls/03" unique_id=987805557]
+layout_mode = 0
+offset_left = -245.0
+offset_top = 646.0
+offset_right = 1403.0
+offset_bottom = 763.0
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Map/Walls/03" unique_id=1511192427]
+layout_mode = 0
+offset_left = -251.2795
+offset_top = -115.999985
+offset_right = 1396.7205
+offset_bottom = 1.0000153
+color = Color(0.015686275, 0.03137255, 0.18039216, 1)
+
+[node name="04" type="Control" parent="Map/Walls" unique_id=1123752919]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Map/Walls/04" unique_id=1209341149]
+layout_mode = 0
+offset_left = -67.000015
+offset_top = -220.0
+offset_right = 109.78038
+offset_bottom = 160.0
+rotation = 0.52883476
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map/Walls/04" unique_id=685265533]
+layout_mode = 0
+offset_left = -176.0
+offset_top = 16.0
+offset_right = 0.7803955
+offset_bottom = 721.0
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map/Walls/04" unique_id=2136882169]
+layout_mode = 0
+offset_left = -196.2795
+offset_top = 382.0
+offset_right = -19.4991
+offset_bottom = 762.0
+rotation = -0.13264503
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Map/Walls/04" unique_id=549026000]
+layout_mode = 0
+offset_left = 1356.0
+offset_top = 162.00002
+offset_right = 1532.7804
+offset_bottom = 542.0
+rotation = -3.440044
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Map/Walls/04" unique_id=777405163]
+layout_mode = 0
+offset_left = 1337.0
+offset_top = 704.00006
+offset_right = 1513.7804
+offset_bottom = 1409.0001
+rotation = -3.174754
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Map/Walls/04" unique_id=1922867878]
+layout_mode = 0
+offset_left = 1282.0001
+offset_top = 812.0
+offset_right = 1458.7805
+offset_bottom = 1192.0
+rotation = -2.9197786
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Map/Walls/04" unique_id=1679697892]
+layout_mode = 0
+offset_left = -245.0
+offset_top = 647.0
+offset_right = 1403.0
+offset_bottom = 764.0
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Map/Walls/04" unique_id=636184021]
+layout_mode = 0
+offset_left = -251.2795
+offset_top = -115.999985
+offset_right = 1396.7205
+offset_bottom = 1.0000153
+color = Color(0.007843138, 0.015686275, 0.11372549, 1)
+
+[node name="05" type="Control" parent="Map/Walls" unique_id=1891358854]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Map/Walls/05" unique_id=1757821654]
+layout_mode = 0
+offset_left = -69.0
+offset_top = -221.0
+offset_right = 107.780396
+offset_bottom = 159.0
+rotation = 0.52883476
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map/Walls/05" unique_id=1934641905]
+layout_mode = 0
+offset_left = -178.0
+offset_top = 14.0
+offset_right = -1.2196045
+offset_bottom = 719.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Map/Walls/05" unique_id=1755968831]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 382.99997
+offset_right = -23.219604
+offset_bottom = 763.0
+rotation = -0.13264503
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Map/Walls/05" unique_id=130888641]
+layout_mode = 0
+offset_left = 1359.9999
+offset_top = 161.00005
+offset_right = 1536.7803
+offset_bottom = 541.00006
+rotation = -3.440044
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Map/Walls/05" unique_id=317806297]
+layout_mode = 0
+offset_left = 1339.0
+offset_top = 703.99994
+offset_right = 1515.7804
+offset_bottom = 1409.0
+rotation = -3.174754
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Map/Walls/05" unique_id=1752770019]
+layout_mode = 0
+offset_left = 1286.0001
+offset_top = 813.0
+offset_right = 1462.7805
+offset_bottom = 1193.0
+rotation = -2.9197786
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Map/Walls/05" unique_id=561518273]
+layout_mode = 0
+offset_left = -245.0
+offset_top = 648.0
+offset_right = 1403.0
+offset_bottom = 765.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Map/Walls/05" unique_id=1994100788]
+layout_mode = 0
+offset_left = -251.2795
+offset_top = -115.999985
+offset_right = 1396.7205
+offset_bottom = 1.0000153
+color = Color(0, 0, 0, 1)
 
 [node name="Lanterne" type="Control" parent="Map" unique_id=27946615]
 layout_mode = 3
@@ -377,29 +691,7 @@ color = Color(1, 0.8509804, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreRight" unique_id=1208569842]
 libraries/ = SubResource("AnimationLibrary_hptm8")
 
-[node name="Hud" type="CanvasLayer" parent="." unique_id=1232617909]
-
-[node name="CenterContainer" type="CenterContainer" parent="Hud" unique_id=498095666]
-custom_minimum_size = Vector2(0, 90)
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Hud/CenterContainer" unique_id=1459580855]
-layout_mode = 2
-theme_override_constants/separation = 576
-
-[node name="Left" type="Label" parent="Hud/CenterContainer/HBoxContainer" unique_id=1489418054]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_8gbba")
-theme_override_font_sizes/font_size = 50
-text = "0"
-
-[node name="Right" type="Label" parent="Hud/CenterContainer/HBoxContainer" unique_id=1886322115]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_8gbba")
-theme_override_font_sizes/font_size = 50
-text = "0"
+[node name="Hud" parent="." unique_id=1551471311 instance=ExtResource("6_344ge")]
 
 [node name="BallTimer" type="Timer" parent="." unique_id=1010083556]
 one_shot = true
