@@ -6,7 +6,7 @@ var p_height : int
 func _ready() -> void:
 	@warning_ignore("narrowing_conversion")
 	win_height = get_viewport_rect().size.y
-	p_height = $ColorRect.get_size().y
+	p_height = $Skins/DefaultSkin.get_size().y
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("up"):

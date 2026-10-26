@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://c7cfkljnaxrci" path="res://Scripts/option_panel_hud.gd" id="3_t1xeu"]
 [ext_resource type="Script" uid="uid://cee1rx11875x0" path="res://Scripts/audio_control.gd" id="4_36asn"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icqry"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 0.7764706)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jye8"]
 bg_color = Color(0.601223, 0.601223, 0.60122293, 1)
 border_width_left = 3
@@ -105,13 +108,6 @@ grow_begin = 0.0
 grow_end = 0.0
 thickness = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtju"]
-bg_color = Color(0.49019608, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yidpd"]
 bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 corner_radius_top_left = 5
@@ -209,6 +205,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_icqry")
 
 [node name="CenterContainer" type="CenterContainer" parent="PauseMenu" unique_id=1197517234]
 layout_mode = 1
@@ -420,20 +417,15 @@ theme_override_constants/margin_left = -57
 layout_mode = 2
 text = "100 %"
 
-[node name="MusicSOON" type="PanelContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer" unique_id=1917398717]
-layout_mode = 2
-mouse_behavior_recursive = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_pbtju")
-
-[node name="MUSIC" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON" unique_id=1970491882]
+[node name="MUSIC" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer" unique_id=1970491882]
 layout_mode = 2
 theme_override_constants/separation = 52
 
-[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC" unique_id=2022501001]
+[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC" unique_id=2022501001]
 layout_mode = 2
 text = "Music audio"
 
-[node name="AudioControl" type="HSlider" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC" unique_id=1721452093 node_paths=PackedStringArray("value_label")]
+[node name="AudioControl" type="HSlider" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC" unique_id=1721452093 node_paths=PackedStringArray("value_label")]
 custom_minimum_size = Vector2(215, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -443,16 +435,16 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8bf2m")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ba8gd")
 max_value = 1.0
 step = 0.01
-value = 1.0
+value = 0.02
 script = ExtResource("4_36asn")
 audio_bus_name = "Music"
 value_label = NodePath("../MarginContainer/Label2")
 
-[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC" unique_id=1975846976]
+[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC" unique_id=1975846976]
 layout_mode = 2
 theme_override_constants/margin_left = -40
 
-[node name="Label2" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/MarginContainer" unique_id=571669755]
+[node name="Label2" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/MarginContainer" unique_id=571669755]
 layout_mode = 2
 text = "100 %"
 
@@ -571,6 +563,6 @@ text = "BACK"
 [connection signal="pressed" from="PauseMenu/CenterContainer/MainButtons/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/GLOBAL/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/GLOBAL/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioControl" method="_on_value_changed"]
-[connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioControl" method="_on_value_changed"]
 [connection signal="item_selected" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/WindowOptions/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="OptionPanel/BACKButton/BACK" to="." method="_on_back_pressed"]

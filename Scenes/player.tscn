@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://qet1tfjqc86l"]
 
 [ext_resource type="Script" uid="uid://43u2qqlaejtv" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://bo1dvjk2ubx4c" path="res://Assets/Textures/Skins/Skin01.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://edueycnyghsx" path="res://Assets/Textures/Skins/skin01.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://d1nlkkexhhujp" path="res://Assets/Textures/Skins/Skin02.png" id="3_6t5aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(20, 120.5)
+size = Vector2(20, 120)
 
 [node name="Player" type="StaticBody2D" unique_id=845928572]
 script = ExtResource("1_cvnsp")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=218611382]
+[node name="Skins" type="Control" parent="." unique_id=320813589]
+layout_mode = 3
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -17,18 +19,48 @@ offset_top = -60.0
 offset_right = 20.0
 offset_bottom = 60.0
 grow_vertical = 2
+
+[node name="DefaultSkin" type="ColorRect" parent="Skins" unique_id=218611382]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_vertical = 2
+
+[node name="OtherSkins" type="Control" parent="Skins" unique_id=1172376617]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Skin01" type="TextureRect" parent="Skins/OtherSkins" unique_id=1293163691]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 100.0
+grow_vertical = 2
+texture = ExtResource("2_cvnsp")
+
+[node name="Skin02" type="TextureRect" parent="Skins/OtherSkins" unique_id=889832888]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 100.0
+grow_vertical = 2
+texture = ExtResource("3_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1383600034]
 position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_bhunq")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1293163691]
-visible = false
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -60.0
-offset_right = 20.0
-offset_bottom = 60.0
-grow_vertical = 2
-texture = ExtResource("2_6t5aa")

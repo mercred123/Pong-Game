@@ -3,17 +3,26 @@
 [ext_resource type="Texture2D" uid="uid://k8m8olf862md" path="res://Assets/Textures/Bg.png" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://c8i08tvk1s3i8" path="res://Scripts/main.gd" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://qet1tfjqc86l" path="res://Scenes/player.tscn" id="3_344ge"]
+[ext_resource type="PackedScene" uid="uid://bkrljpph6a55v" path="res://Scenes/goal_particles.tscn" id="3_hptm8"]
 [ext_resource type="Script" uid="uid://cds22qhb2js3v" path="res://Scripts/robot.gd" id="4_21xkr"]
 [ext_resource type="Script" uid="uid://bflk7km14f5u2" path="res://Scripts/ball.gd" id="4_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bmed41fkbopnt" path="res://Scenes/hud.tscn" id="6_344ge"]
 [ext_resource type="AudioStream" uid="uid://stqs30lgj3oq" path="res://Assets/SFX/Hit.mp3" id="8_344ge"]
+[ext_resource type="AudioStream" uid="uid://dyf42w3rqdnt" path="res://Assets/SFX/Music/BlippyBits_Hush_Loop.ogg" id="9_hptm8"]
 [ext_resource type="AudioStream" uid="uid://di4k1jn2318mx" path="res://Assets/SFX/Goal.mp3" id="9_ynf5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(20, 120.5)
+size = Vector2(20, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
 size = Vector2(10, 10)
+
+[sub_resource type="Curve" id="Curve_riqys"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.96874994), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_bhunq"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_a43kq"]
 offsets = PackedFloat32Array(0, 0.04819277, 0.61445785)
@@ -98,6 +107,7 @@ texture_filter = 1
 texture = ExtResource("1_bo1nx")
 centered = false
 script = ExtResource("2_jjvhh")
+goalParticles = ExtResource("3_hptm8")
 
 [node name="Player" parent="." unique_id=845928572 instance=ExtResource("3_344ge")]
 position = Vector2(50, 324)
@@ -133,6 +143,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=991548278]
 shape = SubResource("RectangleShape2D_riqys")
+
+[node name="Line2D" type="Line2D" parent="Ball" unique_id=90344766]
+width = 4.0
+width_curve = SubResource("Curve_riqys")
+default_color = Color(0.5649617, 0.5649616, 0.5649616, 1)
+gradient = SubResource("Gradient_bhunq")
+
+[node name="TrailTimer" type="Timer" parent="Ball" unique_id=2131817249]
+wait_time = 0.009999999999999998
 
 [node name="Map" type="Node2D" parent="." unique_id=81400212]
 
@@ -704,6 +723,12 @@ bus = &"SFX"
 [node name="SFX_goal" type="AudioStreamPlayer2D" parent="." unique_id=310612526]
 stream = ExtResource("9_ynf5e")
 bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1246478402]
+stream = ExtResource("9_hptm8")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
 [connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]

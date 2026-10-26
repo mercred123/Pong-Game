@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cqax8tum5b6mb" path="res://Assets/Fonts/pixel_font.ttf" id="2_m6uer"]
 [ext_resource type="StyleBox" uid="uid://cvtprg5pni6o3" path="res://Assets/Themes/Buttons/new_style_box_flat.tres" id="3_a43kq"]
 [ext_resource type="Script" uid="uid://cee1rx11875x0" path="res://Scripts/audio_control.gd" id="4_a43kq"]
+[ext_resource type="AudioStream" uid="uid://dyf42w3rqdnt" path="res://Assets/SFX/Music/BlippyBits_Hush_Loop.ogg" id="5_626he"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riqys"]
 bg_color = Color(1, 1, 1, 1)
@@ -114,13 +115,6 @@ grow_begin = 0.0
 grow_end = 0.0
 thickness = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr0ht"]
-bg_color = Color(0.49019608, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r0jt"]
 bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 corner_radius_top_left = 5
@@ -154,6 +148,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_juhg0")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1885699080]
+stream = ExtResource("5_626he")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2110646738]
 layout_mode = 1
@@ -1132,20 +1132,15 @@ theme_override_constants/margin_left = -57
 layout_mode = 2
 text = "100 %"
 
-[node name="MusicSOON" type="PanelContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer" unique_id=889961424]
-layout_mode = 2
-mouse_behavior_recursive = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_qr0ht")
-
-[node name="MUSIC" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON" unique_id=1119016274]
+[node name="MUSIC" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer" unique_id=1119016274]
 layout_mode = 2
 theme_override_constants/separation = 52
 
-[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC" unique_id=350159434]
+[node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC" unique_id=350159434]
 layout_mode = 2
 text = "Music audio"
 
-[node name="AudioControl" type="HSlider" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC" unique_id=649350452 node_paths=PackedStringArray("value_label")]
+[node name="AudioControl" type="HSlider" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC" unique_id=649350452 node_paths=PackedStringArray("value_label")]
 custom_minimum_size = Vector2(215, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1155,16 +1150,16 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_sn0t7")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qr0ht")
 max_value = 1.0
 step = 0.01
-value = 1.0
+value = 0.02
 script = ExtResource("4_a43kq")
 audio_bus_name = "Music"
 value_label = NodePath("../MarginContainer/Label2")
 
-[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC" unique_id=344380681]
+[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC" unique_id=344380681]
 layout_mode = 2
 theme_override_constants/margin_left = -40
 
-[node name="Label2" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/MarginContainer" unique_id=2036359071]
+[node name="Label2" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/MarginContainer" unique_id=2036359071]
 layout_mode = 2
 text = "100 %"
 
@@ -1283,6 +1278,6 @@ text = "BACK"
 [connection signal="pressed" from="MainMenu/MainMenu/MainButtons/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/GLOBAL/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/GLOBAL/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioControl" method="_on_value_changed"]
-[connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MusicSOON/MUSIC/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioControl" to="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioControl" method="_on_value_changed"]
 [connection signal="item_selected" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/WindowOptions/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="OptionPanel/BACKButton/BACK" to="." method="_on_back_pressed"]
