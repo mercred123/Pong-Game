@@ -16,7 +16,11 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func apply_shake(strength: float):
-	shake_strength = strength
+	var video_settings = ConfigFileHandler.load_video_settings()
+	var can_shake = video_settings.screen_shake
+	
+	if can_shake:
+		shake_strength = strength
 
 func _process(delta: float) -> void:
 	if shake_strength > 0:

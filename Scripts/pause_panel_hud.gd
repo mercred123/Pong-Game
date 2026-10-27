@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-@onready var pause_menu: Panel = $PauseMenu
-@onready var option_panel: Panel = $OptionPanel
-@onready var option_button: OptionButton = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/WindowOptions/MarginContainer/VBoxContainer/OptionButton
+@onready var pause_menu: Control = $PauseMenu
+@onready var option_panel: Control = $OptionPanel
+@onready var pause_label: Label = $PauseIcon/Pause/MarginContainer2/Panel/Label
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -14,11 +14,20 @@ func _ready() -> void:
 	get_tree().paused = false
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause_menu"):
 		if get_tree().paused:
 			restart_game()
 		else:
 			pause_game()
+	
+	var keybind_settings = ConfigFileHandler.load_keybind_settings()
+	var event = keybind_settings.get("pause_menu")
+	
+	if event is InputEventKey:
+		var keycode = event.physical_keycode if event.physical_keycode != 0 else event.keycode
+		pause_label.text = OS.get_keycode_string(keycode)
+	else:
+		pause_label.text = "Unassigned"
 
 func pause_game() -> void:
 	pause_menu.visible = true
@@ -40,20 +49,7 @@ func _on_start_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	option_panel.visible = true
-	pause_menu.visible = false
 
 func _on_exit_pressed() -> void:
-	get_tree().quit()
-
-func _on_back_pressed() -> void:
-	option_panel.visible = false
-	pause_menu.visible = true
-
-func _on_option_button_item_selected(index: int) -> void:
-	match index:
-		0:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		1:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-		2:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/start_menu.tscn")

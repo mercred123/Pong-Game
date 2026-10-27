@@ -13,7 +13,8 @@ func _ready() -> void:
 		push_error("Bus introuvable : " + audio_bus_name)
 		return
 	
-	_on_value_changed(self.value)
+	value_changed.connect(_on_value_changed)
+	_on_value_changed(value)
 
 func _on_value_changed(new_value: float) -> void:
 	if audio_bus_id == -1:
