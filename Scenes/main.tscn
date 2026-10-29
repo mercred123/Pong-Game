@@ -151,7 +151,7 @@ default_color = Color(0.5649617, 0.5649616, 0.5649616, 1)
 gradient = SubResource("Gradient_bhunq")
 
 [node name="TrailTimer" type="Timer" parent="Ball" unique_id=2131817249]
-wait_time = 0.009999999999999998
+wait_time = 0.00999999999999999
 
 [node name="Map" type="Node2D" parent="." unique_id=81400212]
 

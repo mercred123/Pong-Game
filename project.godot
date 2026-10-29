@@ -24,6 +24,10 @@ KeybindManager="*uid://bo1qdnr01apmo"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/StyleboxFancy/plugin.cfg", "res://addons/project-time-tracker/plugin.cfg", "res://addons/save_value_viewer/plugin.cfg")
+
 [file_customization]
 
 folder_colors={

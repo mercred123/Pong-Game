@@ -1,0 +1,7 @@
+{
+  "player": {"name": "Mika", "coins": 1200, "tutorial_done": false},
+  "stages": {"forest": true, "station": false},
+  "large_id": 9007199254740993,
+  "volume": 0.7500,
+  "inventory": ["potion", "rope", null, {"ratio": 1.2300000000000001}]
+}

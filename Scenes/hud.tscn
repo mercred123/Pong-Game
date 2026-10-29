@@ -152,7 +152,6 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="PauseMenu" type="Control" parent="." unique_id=2773803]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
