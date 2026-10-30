@@ -5,8 +5,11 @@ extends Control
 @onready var audio_music_control: HSlider = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioMusicControl
 @onready var option_button: OptionButton = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/HBoxContainer/ScreenModeButton
 @onready var shake_screen_check_box: CheckBox = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/ShakeScreenCheckBox
+@onready var keybind_issue: CenterContainer = $OptionPanel/KeybindIssue
 
 func _ready() -> void:
+	keybind_issue.visible = false
+	
 	var video_settings = ConfigFileHandler.load_video_settings()
 	match video_settings.screen_mode:
 		"WINDOWED":
@@ -52,3 +55,11 @@ func _on_audio_sfx_control_drag_ended(value_changed: bool) -> void:
 func _on_audio_music_control_drag_ended(value_changed: bool) -> void:
 	if value_changed:
 		ConfigFileHandler.save_audio_settings("music_volume", audio_music_control.value)
+
+func _on_back_to_options_button_pressed() -> void:
+	keybind_issue.visible = false
+
+func _on_keybind_conflict(key_string: StringName, conflicting_action: StringName):
+	keybind_issue.visible = true
+	$OptionPanel/KeybindIssue/AnimationPlayer.play("error_keybind")
+	$OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/Label.text = "Key Conflict: '%s' is already assigned to '%s'." % [key_string, conflicting_action]

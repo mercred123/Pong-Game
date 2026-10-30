@@ -160,6 +160,55 @@ shadow_offset = Vector2(3.45, 5.675)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_484xk"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xrcc"]
+bg_color = Color(0.07284262, 0.072842635, 0.072842576, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_3j0ha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dqvdc"]
+resource_name = "error_keybind"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.28, 0.42, 0.56, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(0.9921875, 1, 0, 1), Color(0.99607843, 0, 0, 1), Color(0.9921875, 1, 0, 1), Color(0.99517465, 0.61764705, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tfy6s"]
+_data = {
+&"RESET": SubResource("Animation_3j0ha"),
+&"error_keybind": SubResource("Animation_dqvdc")
+}
+
 [node name="OptionPanel" type="Control" unique_id=1801116006]
 layout_mode = 3
 anchors_preset = 15
@@ -536,9 +585,77 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_oersf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_484xk")
 text = "BACK"
 
+[node name="KeybindIssue" type="CenterContainer" parent="OptionPanel" unique_id=1653191564]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="OptionPanel/KeybindIssue" unique_id=1356030383]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xrcc")
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/KeybindIssue/Panel" unique_id=1697952900]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionPanel/KeybindIssue/Panel/MarginContainer" unique_id=1652909612]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer" unique_id=1671706382]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "Key Conflict: This key is already assigned to '{conflicting_action}'."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer" unique_id=1585817717]
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = -32
+
+[node name="BackToOptionsButton" type="Button" parent="OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=1378045340]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_3xrcc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxf74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oersf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_484xk")
+
+[node name="Label" type="Label" parent="OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/MarginContainer/BackToOptionsButton" unique_id=2134466125]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8m81r")
+theme_override_font_sizes/font_size = 17
+text = "Cancel"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OptionPanel/KeybindIssue" unique_id=1347489084]
+libraries/ = SubResource("AnimationLibrary_tfy6s")
+
 [connection signal="drag_ended" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MASTER/AudioMasterControl" to="." method="_on_audio_master_control_drag_ended"]
 [connection signal="drag_ended" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioSFXControl" to="." method="_on_audio_sfx_control_drag_ended"]
 [connection signal="drag_ended" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioMusicControl" to="." method="_on_audio_music_control_drag_ended"]
 [connection signal="item_selected" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/HBoxContainer/ScreenModeButton" to="." method="_on_screen_mode_button_item_selected"]
 [connection signal="toggled" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/ShakeScreenCheckBox" to="." method="_on_shake_screen_check_box_toggled"]
 [connection signal="pressed" from="OptionPanel/BACKButton/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/MarginContainer/BackToOptionsButton" to="." method="_on_back_to_options_button_pressed"]

@@ -36,3 +36,12 @@ func is_default_keybind(action: StringName) -> bool:
 	if not DEFAULT_KEYBINDS.has(action):
 		return true
 	return get_current_physical_keycode(action) == DEFAULT_KEYBINDS[action]
+
+func get_action_using_physical_key(physical_key: Key, exclude_action: StringName) -> StringName:
+	for action in DEFAULT_KEYBINDS.keys():
+		if action == exclude_action:
+			continue
+		for event in InputMap.action_get_events(action):
+			if event is InputEventKey and event.physical_keycode == physical_key:
+				return action
+	return &""

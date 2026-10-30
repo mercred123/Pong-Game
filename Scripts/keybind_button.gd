@@ -3,6 +3,8 @@ extends Button
 @export var action_name: StringName
 @export var reset_action: TextureButton
 
+signal conflict_detected(key_string: String, conflicting_action: StringName)
+
 var listening := false
 
 func _ready() -> void:
@@ -35,8 +37,24 @@ func _input(event: InputEvent) -> void:
 		rebind(event.physical_keycode)
 
 func rebind(physical_keycode: Key) -> void:
+	var conflicting_action = KeybindManager.get_action_using_physical_key(physical_keycode, action_name)
+	
+	if conflicting_action != &"":
+		var localized_keycode = DisplayServer.keyboard_get_keycode_from_physical(physical_keycode)
+		var key_string = OS.get_keycode_string(localized_keycode)
+		
+		conflict_detected.emit(key_string, conflicting_action)
+		
+		if owner and owner.has_method("_on_keybind_conflict"):
+			owner._on_keybind_conflict(key_string, conflicting_action)
+			
+		listening = false
+		update_display()
+		return
+
 	KeybindManager.apply_keybind(action_name, physical_keycode)
 	ConfigFileHandler.save_keybind(action_name, physical_keycode)
+	
 	listening = false
 	update_display()
 
