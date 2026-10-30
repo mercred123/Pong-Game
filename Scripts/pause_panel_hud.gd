@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 		else:
 			pause_game()
 	
-	var keybind_settings = ConfigFileHandler.load_keybind_settings()
+	var keybind_settings = ConfigFileHandler.load_keybinds()
 	var event = keybind_settings.get("pause_menu")
 	
 	if event is InputEventKey:

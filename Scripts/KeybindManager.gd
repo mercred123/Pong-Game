@@ -1,68 +1,38 @@
 extends Node
 
-var default_keybinds: Dictionary = {}
+const DEFAULT_KEYBINDS := {
+	&"up": KEY_W,
+	&"down": KEY_S,
+	&"pause_menu": KEY_TAB
+}
 
 func _ready() -> void:
-	_set_default_action_key("up", KEY_Z)
-	_set_default_action_key("down", KEY_S)
-	_set_default_action_key("pause_menu", KEY_TAB)
-	
-	for action in InputMap.get_actions():
-		var events: Array[InputEventKey] = []
-	
-		for event in InputMap.action_get_events(action):
-			if event is InputEventKey:
-				events.append(event.duplicate())
-	
-		default_keybinds[action] = events
+	var saved = ConfigFileHandler.load_keybinds()
+	for action in DEFAULT_KEYBINDS.keys():
+		var key = saved.get(action, DEFAULT_KEYBINDS[action])
+		apply_keybind(action, key)
 
-func _set_default_action_key(action: StringName, keycode: Key) -> void:
+func apply_keybind(action: StringName, physical_keycode: Key) -> void:
 	for event in InputMap.action_get_events(action):
 		InputMap.action_erase_event(action, event)
 	
-	var ev = InputEventKey.new()
-	ev.keycode = keycode
-	InputMap.action_add_event(action, ev)
-
-func apply_keybind(action: StringName, event: InputEventKey) -> void:
-	for old_event in InputMap.action_get_events(action):
-		if old_event is InputEventKey:
-			InputMap.action_erase_event(action, old_event)
-	
-	InputMap.action_add_event(action, event.duplicate())
+	var event = InputEventKey.new()
+	event.physical_keycode = physical_keycode
+	InputMap.action_add_event(action, event)
 
 func reset_keybind(action: StringName) -> void:
-	if not default_keybinds.has(action):
-		return
-	
+	if DEFAULT_KEYBINDS.has(action):
+		var default_key = DEFAULT_KEYBINDS[action]
+		apply_keybind(action, default_key)
+		ConfigFileHandler.save_keybind(action, default_key)
+
+func get_current_physical_keycode(action: StringName) -> Key:
 	for event in InputMap.action_get_events(action):
 		if event is InputEventKey:
-			InputMap.action_erase_event(action, event)
-	
-	for event in default_keybinds[action]:
-		InputMap.action_add_event(action, event.duplicate())
+			return event.physical_keycode
+	return KEY_NONE
 
 func is_default_keybind(action: StringName) -> bool:
-	if not default_keybinds.has(action):
+	if not DEFAULT_KEYBINDS.has(action):
 		return true
-	
-	var current: Array = InputMap.action_get_events(action)
-	var defaults: Array = default_keybinds[action]
-	
-	if current.size() != defaults.size():
-		return false
-	
-	for i in range(current.size()):
-		var curr_ev = current[i]
-		var def_ev = defaults[i]
-		
-		if curr_ev is InputEventKey and def_ev is InputEventKey:
-			var curr_key = curr_ev.physical_keycode if curr_ev.physical_keycode != 0 else curr_ev.keycode
-			var def_key = def_ev.physical_keycode if def_ev.physical_keycode != 0 else def_ev.keycode
-			
-			if curr_key != def_key:
-				return false
-		else:
-			return false
-			
-	return true
+	return get_current_physical_keycode(action) == DEFAULT_KEYBINDS[action]
