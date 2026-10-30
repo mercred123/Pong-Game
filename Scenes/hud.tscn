@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bgo7nfpp6d6u7" path="res://Assets/Textures/vector_whiteIcons.svg" id="2_t1xeu"]
 [ext_resource type="Script" uid="uid://c7cfkljnaxrci" path="res://Scripts/pause_panel_hud.gd" id="3_t1xeu"]
 [ext_resource type="PackedScene" uid="uid://c3iah45ngvf3x" path="res://Scenes/Components/option_panel.tscn" id="4_6fbih"]
+[ext_resource type="Script" uid="uid://lhtc5l6g2abr" path="res://Scripts/fps_label.gd" id="4_36asn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhunq"]
 atlas = ExtResource("2_t1xeu")
@@ -150,6 +151,23 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_e0onf")
 theme_override_font_sizes/font_size = 50
 text = "0"
+
+[node name="Fps" type="MarginContainer" parent="." unique_id=2066961135]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 51.0
+grow_horizontal = 0
+theme_override_constants/margin_left = -90
+theme_override_constants/margin_top = 35
+
+[node name="Label" type="Label" parent="Fps" unique_id=992767785 node_paths=PackedStringArray("optionPanel")]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e0onf")
+text = "120fps"
+script = ExtResource("4_36asn")
+optionPanel = NodePath("../../OptionPanel")
 
 [node name="PauseMenu" type="Control" parent="." unique_id=2773803]
 layout_mode = 3

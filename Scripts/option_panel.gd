@@ -1,5 +1,7 @@
 extends Control
 
+signal show_fps
+
 @onready var audio_master_control: HSlider = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MASTER/AudioMasterControl
 @onready var audio_sfx_control: HSlider = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioSFXControl
 @onready var audio_music_control: HSlider = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioMusicControl
@@ -63,3 +65,6 @@ func _on_keybind_conflict(key_string: StringName, conflicting_action: StringName
 	keybind_issue.visible = true
 	$OptionPanel/KeybindIssue/AnimationPlayer.play("error_keybind")
 	$OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/Label.text = "Key Conflict: '%s' is already assigned to '%s'." % [key_string, conflicting_action]
+
+func _on_fps_check_box_pressed() -> void:
+	show_fps.emit()

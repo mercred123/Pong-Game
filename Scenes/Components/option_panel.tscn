@@ -79,10 +79,20 @@ expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f8o3"]
-bg_color = Color(0.2520276, 0.25202766, 0.25202754, 1)
+bg_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1xeu"]
 bg_color = Color(0.2520276, 0.25202766, 0.25202754, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riqys"]
+bg_color = Color(1, 0, 0, 0.41568628)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3j0ha"]
+bg_color = Color(0.2509804, 0.2509804, 0.2509804, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iicw"]
 bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
@@ -439,6 +449,26 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t1xeu")
 button_pressed = true
 text = "Screen Shake"
 
+[node name="FPSCheckBox" type="CheckBox" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer" unique_id=1322461806]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6f8o3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t1xeu")
+text = "Show FPS"
+
+[node name="Panel" type="Panel" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer" unique_id=944894021]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_riqys")
+
+[node name="VSYNCCheckBox" type="CheckBox" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/Panel" unique_id=2077746734]
+layout_mode = 0
+offset_right = 145.0
+offset_bottom = 31.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_3j0ha")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3j0ha")
+text = "Enable V-SYNC "
+
 [node name="ControlsOptions" type="PanelContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer" unique_id=333161961]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_piegi")
@@ -657,5 +687,6 @@ libraries/ = SubResource("AnimationLibrary_tfy6s")
 [connection signal="drag_ended" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioMusicControl" to="." method="_on_audio_music_control_drag_ended"]
 [connection signal="item_selected" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/HBoxContainer/ScreenModeButton" to="." method="_on_screen_mode_button_item_selected"]
 [connection signal="toggled" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/ShakeScreenCheckBox" to="." method="_on_shake_screen_check_box_toggled"]
+[connection signal="pressed" from="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/FPSCheckBox" to="." method="_on_fps_check_box_pressed"]
 [connection signal="pressed" from="OptionPanel/BACKButton/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/MarginContainer/BackToOptionsButton" to="." method="_on_back_to_options_button_pressed"]
