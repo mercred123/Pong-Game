@@ -2,26 +2,27 @@ extends Control
 
 signal show_fps
 
-@onready var audio_master_control: HSlider = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MASTER/AudioMasterControl
-@onready var audio_sfx_control: HSlider = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/SFX/AudioSFXControl
-@onready var audio_music_control: HSlider = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/AudioOptions/MarginContainer/VBoxContainer/MUSIC/AudioMusicControl
-@onready var option_button: OptionButton = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/HBoxContainer/ScreenModeButton
-@onready var shake_screen_check_box: CheckBox = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/ShakeScreenCheckBox
-@onready var keybind_issue: CenterContainer = $OptionPanel/KeybindIssue
-@onready var vsync_check_box: CheckBox = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/VSYNCCheckBox
-@onready var fps_check_box: CheckBox = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/FPSCheckBox
+@export_category("References")
+@export var audio_master_control: HSlider
+@export var audio_sfx_control: HSlider
+@export var audio_music_control: HSlider
+@export var option_screen_button: OptionButton
+@export var shake_screen_check_box: CheckBox
+@export var keybind_popup: CenterContainer
+@export var vsync_check_box: CheckBox
+@export var fps_check_box: CheckBox
 
 func _ready() -> void:
-	keybind_issue.visible = false
+	keybind_popup.visible = false
 	
 	var video_settings = ConfigFileHandler.load_video_settings()
 	match video_settings.get("screen_mode", "WINDOWED"):
 		"WINDOWED":
-			option_button.selected = 0
+			option_screen_button.selected = 0
 		"MAXIMIZED":
-			option_button.selected = 1
+			option_screen_button.selected = 1
 		"FULLSCREEN":
-			option_button.selected = 2
+			option_screen_button.selected = 2
 	
 	shake_screen_check_box.button_pressed = video_settings.get("screen_shake", true)
 	fps_check_box.button_pressed = video_settings.get("show_fps", false)
@@ -63,12 +64,12 @@ func _on_audio_music_control_drag_ended(value_changed: bool) -> void:
 		ConfigFileHandler.save_audio_settings("music_volume", audio_music_control.value)
 
 func _on_back_to_options_button_pressed() -> void:
-	keybind_issue.visible = false
+	keybind_popup.visible = false
 
 func _on_keybind_conflict(key_string: StringName, conflicting_action: StringName):
-	keybind_issue.visible = true
-	$OptionPanel/KeybindIssue/AnimationPlayer.play("error_keybind")
-	$OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/Label.text = "Key Conflict: '%s' is already assigned to '%s'." % [key_string, conflicting_action]
+	keybind_popup.visible = true
+	$OptionPanel/KeybindPopup/AnimationPlayer.play("error_keybind")
+	$OptionPanel/KeybindPopup/Panel/MarginContainer/VBoxContainer/Label.text = "Key Conflict: '%s' is already assigned to '%s'." % [key_string, conflicting_action]
 
 func _on_vsync_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
