@@ -14,10 +14,12 @@ func _ready() -> void:
 
 func apply_keybind(action: StringName, physical_keycode: Key) -> void:
 	for event in InputMap.action_get_events(action):
-		InputMap.action_erase_event(action, event)
+		if event is InputEventKey:
+			InputMap.action_erase_event(action, event)
 	
-	var event = InputEventKey.new()
+	var event := InputEventKey.new()
 	event.physical_keycode = physical_keycode
+	
 	InputMap.action_add_event(action, event)
 
 func reset_keybind(action: StringName) -> void:

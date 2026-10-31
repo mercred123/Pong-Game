@@ -18,6 +18,8 @@ func _create_default_config() -> void:
 	# Video
 	config.set_value("video", "screen_mode", "WINDOWED")
 	config.set_value("video", "screen_shake", true)
+	config.set_value("video", "show_fps", false)
+	config.set_value("video", "vsync", false)
 	
 	# Audio
 	config.set_value("audio", "master_volume", 1.0)
@@ -52,7 +54,9 @@ func save_keybind(action: String, physical_keycode: Key) -> void:
 
 func load_keybinds() -> Dictionary:
 	var keybinds = {}
+	
 	if config.has_section("keybinding"):
 		for key in config.get_section_keys("keybinding"):
-			keybinds[key] = config.get_value("keybinding", key)
+			keybinds[key] = int(config.get_value("keybinding", key))
+	
 	return keybinds

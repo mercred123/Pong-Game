@@ -8,12 +8,14 @@ signal show_fps
 @onready var option_button: OptionButton = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/HBoxContainer/ScreenModeButton
 @onready var shake_screen_check_box: CheckBox = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/ShakeScreenCheckBox
 @onready var keybind_issue: CenterContainer = $OptionPanel/KeybindIssue
+@onready var vsync_check_box: CheckBox = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/VSYNCCheckBox
+@onready var fps_check_box: CheckBox = $OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/VideoOptions/MarginContainer/VBoxContainer/FPSCheckBox
 
 func _ready() -> void:
 	keybind_issue.visible = false
 	
 	var video_settings = ConfigFileHandler.load_video_settings()
-	match video_settings.screen_mode:
+	match video_settings.get("screen_mode", "WINDOWED"):
 		"WINDOWED":
 			option_button.selected = 0
 		"MAXIMIZED":
@@ -21,7 +23,9 @@ func _ready() -> void:
 		"FULLSCREEN":
 			option_button.selected = 2
 	
-	shake_screen_check_box.button_pressed = video_settings.screen_shake
+	shake_screen_check_box.button_pressed = video_settings.get("screen_shake", true)
+	fps_check_box.button_pressed = video_settings.get("show_fps", false)
+	vsync_check_box.button_pressed = video_settings.get("vsync", false)
 	
 	var audio_settings = ConfigFileHandler.load_audio_settings()
 	audio_master_control.value = audio_settings.master_volume
@@ -66,5 +70,18 @@ func _on_keybind_conflict(key_string: StringName, conflicting_action: StringName
 	$OptionPanel/KeybindIssue/AnimationPlayer.play("error_keybind")
 	$OptionPanel/KeybindIssue/Panel/MarginContainer/VBoxContainer/Label.text = "Key Conflict: '%s' is already assigned to '%s'." % [key_string, conflicting_action]
 
-func _on_fps_check_box_pressed() -> void:
-	show_fps.emit()
+func _on_vsync_check_box_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		ConfigFileHandler.save_video_settings("vsync", true)
+	elif toggled_on == false:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		ConfigFileHandler.save_video_settings("vsync", false)
+
+func _on_fps_check_box_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		show_fps.emit()
+		ConfigFileHandler.save_video_settings("show_fps", true)
+	elif toggled_on == false:
+		show_fps.emit()
+		ConfigFileHandler.save_video_settings("show_fps", false)
