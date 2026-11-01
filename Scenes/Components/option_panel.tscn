@@ -494,7 +494,6 @@ text = "Screen Shake"
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_6f8o3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t1xeu")
-button_pressed = true
 text = "Show FPS"
 
 [node name="VSYNCCheckBox" type="CheckBox" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/VideoOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer" unique_id=2077746734]
@@ -536,7 +535,7 @@ theme_override_constants/separation = 5
 
 [node name="Up" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1659282501]
 layout_mode = 2
-theme_override_constants/separation = 167
+theme_override_constants/separation = 154
 
 [node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Up" unique_id=33514978]
 layout_mode = 2
@@ -576,7 +575,7 @@ script = SubResource("GDScript_3xrcc")
 
 [node name="Down" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1863333877]
 layout_mode = 2
-theme_override_constants/separation = 144
+theme_override_constants/separation = 131
 
 [node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Down" unique_id=1024642382]
 layout_mode = 2
@@ -615,7 +614,7 @@ stretch_mode = 0
 
 [node name="Pause" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1176267238]
 layout_mode = 2
-theme_override_constants/separation = 94
+theme_override_constants/separation = 81
 
 [node name="Label" type="Label" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause" unique_id=831254157]
 layout_mode = 2

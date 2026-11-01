@@ -916,6 +916,7 @@ offset_bottom = 569.0
 rotation = 0.13264503
 
 [node name="OptionPanel" parent="." unique_id=1801116006 instance=ExtResource("5_8u0lp")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="MainMenu/MainMenu/MainButtons/VBoxContainer/START" to="." method="_on_start_pressed"]

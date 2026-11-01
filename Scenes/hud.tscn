@@ -297,7 +297,8 @@ layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="START" type="Button" parent="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer" unique_id=90232880]
+[node name="RESTART" type="Button" parent="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer" unique_id=90232880]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_e0onf")
@@ -306,7 +307,7 @@ theme_override_styles/normal = ExtResource("2_6fbih")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8jye8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_43w4t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7gr8i")
-text = "START GAME"
+text = "RESTART"
 
 [node name="OPTIONS" type="Button" parent="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer" unique_id=1851868137]
 layout_mode = 2
@@ -436,7 +437,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_oersf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_484xk")
 text = "BACK"
 
-[connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/RESTART" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/OPTIONS" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/DIFICULTY" to="." method="_on_dificulty_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]

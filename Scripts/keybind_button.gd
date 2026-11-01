@@ -4,6 +4,7 @@ extends Button
 @export var reset_action: TextureButton
 
 signal conflict_detected(key_string: String, conflicting_action: StringName)
+signal update_pause_label
 
 var listening := false
 
@@ -64,6 +65,7 @@ func _on_reset_pressed() -> void:
 	update_display()
 
 func update_display() -> void:
+	update_pause_label.emit()
 	var physical_key = KeybindManager.get_current_physical_keycode(action_name)
 	if physical_key != KEY_NONE:
 		var localized_keycode = DisplayServer.keyboard_get_keycode_from_physical(physical_key)
