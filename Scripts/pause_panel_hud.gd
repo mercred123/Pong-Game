@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var pause_menu: Control = $PauseMenu
 @onready var option_panel: Control = $OptionPanel
 @onready var pause_label: Label = $PauseIcon/Pause/MarginContainer2/Panel/Label
+@onready var dificulty_panel: Control = $DificultyPanel
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -53,3 +54,6 @@ func _on_options_pressed() -> void:
 func _on_exit_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/start_menu.tscn")
+
+func _on_dificulty_pressed() -> void:
+	dificulty_panel.visible = true

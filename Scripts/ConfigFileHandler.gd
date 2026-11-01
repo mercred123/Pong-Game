@@ -26,6 +26,9 @@ func _create_default_config() -> void:
 	config.set_value("audio", "sfx_volume", 0.1)
 	config.set_value("audio", "music_volume", 0.02)
 	
+	# Difficulty
+	config.set_value("difficulty", "mode", 1)
+	
 	config.save(SETTINGS_FILE_PATH)
 
 func save_video_settings(key: String, value):
@@ -37,6 +40,16 @@ func load_video_settings():
 	for key in config.get_section_keys("video"):
 		video_settings[key] = config.get_value("video", key)
 	return video_settings
+
+func save_difficulty_settings(key: String, value):
+	config.set_value("difficulty", key, value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_difficulty_settings():
+	var difficulty_settings = {}
+	for key in config.get_section_keys("difficulty"):
+		difficulty_settings[key] = config.get_value("difficulty", key)
+	return difficulty_settings
 
 func save_audio_settings(key: String, value):
 	config.set_value("audio", key, value)

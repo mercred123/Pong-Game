@@ -43,7 +43,7 @@ func _on_ball_timer_timeout() -> void:
 
 func _on_score_left_body_entered(body: Node2D) -> void:
 	score[1] += 1
-	hud.get_node("CenterContainer/HBoxContainer/Left").text = str(score[1])
+	hud.get_node("Points/HBoxContainer/Left").text = str(score[1])
 	$BallTimer.start()
 	$ScoreLeft/AnimationPlayer.play("Goal")
 	apply_shake(5.0)
@@ -52,7 +52,7 @@ func _on_score_left_body_entered(body: Node2D) -> void:
 
 func _on_score_right_body_entered(body: Node2D) -> void:
 	score[0] += 1
-	hud.get_node("CenterContainer/HBoxContainer/Right").text = str(score[0])
+	hud.get_node("Points/HBoxContainer/Right").text = str(score[0])
 	$BallTimer.start()
 	$ScoreRight/AnimationPlayer.play("Goal")
 	apply_shake(5.0)

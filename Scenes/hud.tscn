@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c7cfkljnaxrci" path="res://Scripts/pause_panel_hud.gd" id="3_t1xeu"]
 [ext_resource type="PackedScene" uid="uid://c3iah45ngvf3x" path="res://Scenes/Components/option_panel.tscn" id="4_6fbih"]
 [ext_resource type="Script" uid="uid://lhtc5l6g2abr" path="res://Scripts/fps_label.gd" id="4_36asn"]
+[ext_resource type="Script" uid="uid://bnqbyjts7yvks" path="res://Scripts/dificulty_panel.gd" id="7_8jye8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhunq"]
 atlas = ExtResource("2_t1xeu")
@@ -73,6 +74,78 @@ shadow_offset = Vector2(3.45, 5.675)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gr8i"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gr8i"]
+bg_color = Color(0.07284262, 0.072842635, 0.072842576, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24728817, 0.24728817, 0.24728817, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.1081365, 0.1081365, 0.1081365, 1)
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ep0j"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riqys"]
+bg_color = Color(0.59375, 0.59375, 0.59375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn0t7"]
+bg_color = Color(0.18564588, 0.18564588, 0.18564588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f5kr"]
+bg_color = Color(0.59375, 0.59375, 0.59375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxf74"]
+bg_color = Color(0.601223, 0.601223, 0.60122293, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_top = 6.0
+expand_margin_right = 16.0
+expand_margin_bottom = 6.0
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(3.45, 5.675)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oersf"]
+bg_color = Color(0.7204677, 0.7204674, 0.7204674, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_top = 6.0
+expand_margin_right = 16.0
+expand_margin_bottom = 6.0
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(3.45, 5.675)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_484xk"]
+
 [node name="Hud" type="CanvasLayer" unique_id=1551471311]
 process_mode = 3
 script = ExtResource("3_t1xeu")
@@ -130,23 +203,23 @@ theme_override_font_sizes/font_size = 5
 text = "E"
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2140174918]
+[node name="Points" type="CenterContainer" parent="." unique_id=2140174918]
 custom_minimum_size = Vector2(0, 90)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=984061131]
+[node name="HBoxContainer" type="HBoxContainer" parent="Points" unique_id=984061131]
 layout_mode = 2
 theme_override_constants/separation = 576
 
-[node name="Left" type="Label" parent="CenterContainer/HBoxContainer" unique_id=587767115]
+[node name="Left" type="Label" parent="Points/HBoxContainer" unique_id=587767115]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_e0onf")
 theme_override_font_sizes/font_size = 50
 text = "0"
 
-[node name="Right" type="Label" parent="CenterContainer/HBoxContainer" unique_id=2023127320]
+[node name="Right" type="Label" parent="Points/HBoxContainer" unique_id=2023127320]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_e0onf")
 theme_override_font_sizes/font_size = 50
@@ -215,6 +288,7 @@ text = "PAUSE MENU"
 [node name="MainButtons" type="MarginContainer" parent="PauseMenu/PauseMenu/CenterContainer" unique_id=1849999227]
 layout_mode = 2
 theme_override_constants/margin_left = 435
+theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 435
 metadata/_edit_use_anchors_ = true
 
@@ -245,6 +319,17 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_43w4t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7gr8i")
 text = "OPTIONS"
 
+[node name="DIFICULTY" type="Button" parent="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer" unique_id=2107612892]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_e0onf")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = ExtResource("2_6fbih")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8jye8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_43w4t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7gr8i")
+text = "DIFICULTY"
+
 [node name="EXIT" type="Button" parent="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer" unique_id=1463757268]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -259,6 +344,101 @@ text = "EXIT"
 [node name="OptionPanel" parent="." unique_id=1801116006 instance=ExtResource("4_6fbih")]
 visible = false
 
+[node name="DificultyPanel" type="Control" parent="." unique_id=1738559580 node_paths=PackedStringArray("difficultyOption")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_8jye8")
+difficultyOption = NodePath("CenterContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer/OptionButton")
+
+[node name="CenterContainer" type="CenterContainer" parent="DificultyPanel" unique_id=1915382112]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="DificultyPanel/CenterContainer" unique_id=1790325688]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7gr8i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DificultyPanel/CenterContainer/Panel" unique_id=1519057198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="DificultyPanel/CenterContainer/Panel/VBoxContainer" unique_id=1563367317]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "DIFICULTY SETTINGS"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="DificultyPanel/CenterContainer/Panel/VBoxContainer" unique_id=462960176]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_5ep0j")
+
+[node name="MarginContainer" type="MarginContainer" parent="DificultyPanel/CenterContainer/Panel/VBoxContainer" unique_id=2136115987]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DificultyPanel/CenterContainer/Panel/VBoxContainer/MarginContainer" unique_id=827911570]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="DificultyPanel/CenterContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1242905085]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_riqys")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sn0t7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4f5kr")
+selected = 0
+item_count = 3
+popup/item_0/text = "easy"
+popup/item_0/id = 1
+popup/item_1/text = "medium"
+popup/item_1/id = 2
+popup/item_2/text = "hard"
+popup/item_2/id = 3
+
+[node name="BACKButton" type="MarginContainer" parent="DificultyPanel/CenterContainer/Panel" unique_id=1306256756]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 525
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 160
+
+[node name="BackButton" type="Button" parent="DificultyPanel/CenterContainer/Panel/BACKButton" unique_id=973267173]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_e0onf")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = ExtResource("2_6fbih")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxf74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oersf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_484xk")
+text = "BACK"
+
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/START" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/OPTIONS" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/DIFICULTY" to="." method="_on_dificulty_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
+[connection signal="item_selected" from="DificultyPanel/CenterContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer/OptionButton" to="DificultyPanel" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="DificultyPanel/CenterContainer/Panel/BACKButton/BackButton" to="DificultyPanel" method="_on_back_button_pressed"]

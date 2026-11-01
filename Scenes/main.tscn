@@ -112,9 +112,10 @@ goalParticles = ExtResource("3_hptm8")
 [node name="Player" parent="." unique_id=845928572 instance=ExtResource("3_344ge")]
 position = Vector2(50, 324)
 
-[node name="Robot" type="StaticBody2D" parent="." unique_id=851100549]
+[node name="Robot" type="StaticBody2D" parent="." unique_id=851100549 node_paths=PackedStringArray("hud")]
 position = Vector2(1060, 324)
 script = ExtResource("4_21xkr")
+hud = NodePath("../Hud")
 
 [node name="ColorRect" type="ColorRect" parent="Robot" unique_id=577833348]
 anchors_preset = 4
