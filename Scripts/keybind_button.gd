@@ -2,6 +2,7 @@ extends Button
 
 @export var action_name: StringName
 @export var reset_action: TextureButton
+@export var key_texture: TextureRect
 
 signal conflict_detected(key_string: String, conflicting_action: StringName)
 signal update_pause_label
@@ -21,6 +22,7 @@ func _ready() -> void:
 func start_listening() -> void:
 	listening = true
 	text = "Press..."
+	key_texture.visible = false
 
 func cancel_listening() -> void:
 	listening = false
@@ -66,12 +68,21 @@ func _on_reset_pressed() -> void:
 
 func update_display() -> void:
 	update_pause_label.emit()
+	text = ""
 	var physical_key = KeybindManager.get_current_physical_keycode(action_name)
 	if physical_key != KEY_NONE:
 		var localized_keycode = DisplayServer.keyboard_get_keycode_from_physical(physical_key)
-		text = OS.get_keycode_string(localized_keycode)
+		var key_string = OS.get_keycode_string(localized_keycode)
+		var path = "res://Assets/Textures/keys/Outlined/" + key_string + ".svg"
+		
+		if ResourceLoader.exists(path):
+			key_texture.texture = load(path)
+			key_texture.visible = true
+		else:
+			key_texture.visible = false
+			push_warning("Sprite introuvable : " + path)
 	else:
-		text = "Unassigned"
+		key_texture.visible = false
 	
 	if reset_action:
 		reset_action.visible = not KeybindManager.is_default_keybind(action_name)

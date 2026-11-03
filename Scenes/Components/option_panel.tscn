@@ -545,15 +545,31 @@ text = "Up :"
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Up" unique_id=643984985]
 layout_mode = 2
 
-[node name="UpButton" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Up/HBoxContainer" unique_id=1332883078 node_paths=PackedStringArray("reset_action")]
+[node name="UpButton" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Up/HBoxContainer" unique_id=1332883078 node_paths=PackedStringArray("reset_action", "key_texture")]
 custom_minimum_size = Vector2(171, 29)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0iicw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ajim5")
-text = "Z"
 script = ExtResource("3_5nhv7")
 action_name = &"up"
 reset_action = NodePath("../ResetUp/TextureButton")
+key_texture = NodePath("UpTexture")
+
+[node name="UpTexture" type="TextureRect" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Up/HBoxContainer/UpButton" unique_id=534075164]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TESTBUTTON" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Up/HBoxContainer" unique_id=1706141029]
 custom_minimum_size = Vector2(171, 29)
@@ -585,15 +601,31 @@ text = "Down :"
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Down" unique_id=1418397529]
 layout_mode = 2
 
-[node name="DownButton" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Down/HBoxContainer" unique_id=274990494 node_paths=PackedStringArray("reset_action")]
+[node name="DownButton" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Down/HBoxContainer" unique_id=274990494 node_paths=PackedStringArray("reset_action", "key_texture")]
 custom_minimum_size = Vector2(171, 29)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0iicw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ajim5")
-text = "S"
 script = ExtResource("3_5nhv7")
 action_name = &"down"
 reset_action = NodePath("../ResetDown/TextureButton")
+key_texture = NodePath("DownTexture")
+
+[node name="DownTexture" type="TextureRect" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Down/HBoxContainer/DownButton" unique_id=842910952]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TESTBUTTON" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Down/HBoxContainer" unique_id=1609253805]
 custom_minimum_size = Vector2(171, 29)
@@ -624,15 +656,31 @@ text = "Pause Menu :"
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause" unique_id=229145496]
 layout_mode = 2
 
-[node name="PauseButton" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause/HBoxContainer" unique_id=2091833209 node_paths=PackedStringArray("reset_action")]
+[node name="PauseButton" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause/HBoxContainer" unique_id=2091833209 node_paths=PackedStringArray("reset_action", "key_texture")]
 custom_minimum_size = Vector2(171, 29)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0iicw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ajim5")
-text = "TAB"
 script = ExtResource("3_5nhv7")
 action_name = &"pause_menu"
 reset_action = NodePath("../ResetPauseMenu/TextureButton")
+key_texture = NodePath("PauseTexture")
+
+[node name="PauseTexture" type="TextureRect" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause/HBoxContainer/PauseButton" unique_id=613927146]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TESTBUTTON" type="Button" parent="OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause/HBoxContainer" unique_id=485870286]
 custom_minimum_size = Vector2(171, 29)
