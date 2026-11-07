@@ -19,10 +19,13 @@ func _ready() -> void:
 	match video_settings.get("screen_mode", "WINDOWED"):
 		"WINDOWED":
 			option_screen_button.selected = 0
+			ConfigFileHandler.save_video_settings("screen_mode", "WINDOWED")
 		"MAXIMIZED":
 			option_screen_button.selected = 1
+			ConfigFileHandler.save_video_settings("screen_mode", "MAXIMIZED")
 		"FULLSCREEN":
 			option_screen_button.selected = 2
+			ConfigFileHandler.save_video_settings("screen_mode", "FULLSCREEN")
 	
 	shake_screen_check_box.button_pressed = video_settings.get("screen_shake", true)
 	fps_check_box.button_pressed = video_settings.get("show_fps", false)
