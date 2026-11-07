@@ -10,6 +10,9 @@ signal update_pause_label
 var listening := false
 
 func _ready() -> void:
+	if OS.has_feature("mobile"):
+		return
+	
 	focus_mode = Control.FOCUS_ALL
 	pressed.connect(start_listening)
 	focus_exited.connect(func(): if listening: cancel_listening())
@@ -29,6 +32,9 @@ func cancel_listening() -> void:
 	update_display()
 
 func _input(event: InputEvent) -> void:
+	if OS.has_feature("mobile"):
+		return
+	
 	if not listening:
 		return
 	

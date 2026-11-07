@@ -31,6 +31,21 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_size = 3
 shadow_offset = Vector2(0.72, 0.58)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bf2m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piegi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2avg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1a2va"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssfue"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icqry"]
 bg_color = Color(0.08235294, 0.08235294, 0.08235294, 0.7764706)
 
@@ -146,17 +161,41 @@ shadow_offset = Vector2(3.45, 5.675)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_484xk"]
 
-[node name="Hud" type="CanvasLayer" unique_id=1551471311]
+[node name="Hud" type="CanvasLayer" unique_id=1551471311 node_paths=PackedStringArray("mobile_pause_button")]
 process_mode = 3
 script = ExtResource("3_t1xeu")
+mobile_pause_button = NodePath("PauseIcon/Pause/MarginContainer3/Button/MobilePauseButton")
+
+[node name="Points" type="CenterContainer" parent="." unique_id=2140174918]
+custom_minimum_size = Vector2(0, 90)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Points" unique_id=984061131]
+layout_mode = 2
+theme_override_constants/separation = 576
+
+[node name="Left" type="Label" parent="Points/HBoxContainer" unique_id=587767115]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e0onf")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Right" type="Label" parent="Points/HBoxContainer" unique_id=2023127320]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e0onf")
+theme_override_font_sizes/font_size = 50
+text = "0"
 
 [node name="PauseIcon" type="MarginContainer" parent="." unique_id=1443145441]
-offset_right = 40.0
+offset_right = 45.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 45
 
 [node name="Pause" type="Control" parent="PauseIcon" unique_id=1293162827]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseIcon/Pause" unique_id=1994886229]
 layout_mode = 0
@@ -203,27 +242,32 @@ theme_override_font_sizes/font_size = 5
 text = "E"
 horizontal_alignment = 1
 
-[node name="Points" type="CenterContainer" parent="." unique_id=2140174918]
-custom_minimum_size = Vector2(0, 90)
-anchors_preset = 10
+[node name="MarginContainer3" type="MarginContainer" parent="PauseIcon/Pause" unique_id=587478250]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = -35
+theme_override_constants/margin_bottom = -16
+
+[node name="Button" type="Control" parent="PauseIcon/Pause/MarginContainer3" unique_id=1372631943]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MobilePauseButton" type="Button" parent="PauseIcon/Pause/MarginContainer3/Button" unique_id=317292960]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Points" unique_id=984061131]
-layout_mode = 2
-theme_override_constants/separation = 576
-
-[node name="Left" type="Label" parent="Points/HBoxContainer" unique_id=587767115]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_e0onf")
-theme_override_font_sizes/font_size = 50
-text = "0"
-
-[node name="Right" type="Label" parent="Points/HBoxContainer" unique_id=2023127320]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_e0onf")
-theme_override_font_sizes/font_size = 50
-text = "0"
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8bf2m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_piegi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1a2va")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ssfue")
 
 [node name="Fps" type="MarginContainer" parent="." unique_id=2066961135]
 anchors_preset = 1

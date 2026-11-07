@@ -10,6 +10,7 @@ func _ready() -> void:
 		config.load(SETTINGS_FILE_PATH)
 
 func _create_default_config() -> void:
+	
 	# Keybindings
 	config.set_value("keybinding", "up", KEY_W)
 	config.set_value("keybinding", "down", KEY_S)

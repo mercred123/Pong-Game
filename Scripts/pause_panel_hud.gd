@@ -4,15 +4,22 @@ extends CanvasLayer
 @onready var option_panel: Control = $OptionPanel
 @onready var pause_label: Label = $PauseIcon/Pause/MarginContainer2/Panel/Label
 @onready var dificulty_panel: Control = $DificultyPanel
+@export var mobile_pause_button: Button
 
 func _ready() -> void:
-	option_panel.get_node("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause/HBoxContainer/PauseButton").update_pause_label.connect(update_pause_text)
-	update_pause_text()
-	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	option_panel.visible = false
 	pause_menu.visible = false
+	
+	if OS.has_feature("mobile"):
+		mobile_pause_button.visible = true
+		mobile_pause_button.pressed.connect(pause_game)
+	else:
+		mobile_pause_button.visible = false
+	
+		option_panel.get_node("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/Pause/HBoxContainer/PauseButton").update_pause_label.connect(update_pause_text)
+		update_pause_text()
 	
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	get_tree().paused = false
@@ -28,6 +35,9 @@ func update_pause_text() -> void:
 		pause_label.text = "Unassigned"
 
 func _process(_delta: float) -> void:
+	if OS.has_feature("mobile"):
+		return
+	
 	if Input.is_action_just_pressed("pause_menu"):
 		if get_tree().paused:
 			restart_game()

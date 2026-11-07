@@ -220,7 +220,7 @@ _data = {
 &"error_keybind": SubResource("Animation_dqvdc")
 }
 
-[node name="OptionPanel" type="Control" unique_id=1801116006 node_paths=PackedStringArray("audio_master_control", "audio_sfx_control", "audio_music_control", "option_screen_button", "shake_screen_check_box", "keybind_popup", "vsync_check_box", "fps_check_box")]
+[node name="OptionPanel" type="Control" unique_id=1801116006 node_paths=PackedStringArray("audio_master_control", "audio_sfx_control", "audio_music_control", "option_screen_button", "screen_mode", "shake_screen_check_box", "controls_options", "keybind_popup", "vsync_check_box", "fps_check_box")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,7 +232,9 @@ audio_master_control = NodePath("OptionPanel/Options/ScrollContainer/CenterConta
 audio_sfx_control = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/AudioOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/SFX/HBoxContainer/AudioSFXControl")
 audio_music_control = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/AudioOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MUSIC/HBoxContainer/AudioMusicControl")
 option_screen_button = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/VideoOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ScreenModeButton")
+screen_mode = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/VideoOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer")
 shake_screen_check_box = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/VideoOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/ShakeScreenCheckBox")
+controls_options = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/ControlsOptions")
 keybind_popup = NodePath("OptionPanel/KeybindPopup")
 vsync_check_box = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/VideoOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/VSYNCCheckBox")
 fps_check_box = NodePath("OptionPanel/Options/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer/VideoOptions/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/FPSCheckBox")

@@ -7,7 +7,9 @@ signal show_fps
 @export var audio_sfx_control: HSlider
 @export var audio_music_control: HSlider
 @export var option_screen_button: OptionButton
+@export var screen_mode: HBoxContainer
 @export var shake_screen_check_box: CheckBox
+@export var controls_options: PanelContainer
 @export var keybind_popup: CenterContainer
 @export var vsync_check_box: CheckBox
 @export var fps_check_box: CheckBox
@@ -29,12 +31,20 @@ func _ready() -> void:
 	
 	shake_screen_check_box.button_pressed = video_settings.get("screen_shake", true)
 	fps_check_box.button_pressed = video_settings.get("show_fps", false)
+	
 	vsync_check_box.button_pressed = video_settings.get("vsync", false)
+	if video_settings.get("plateforme", "pc") == "mobile":
+		ConfigFileHandler.save_video_settings("vsync", true)
 	
 	var audio_settings = ConfigFileHandler.load_audio_settings()
 	audio_master_control.value = audio_settings.master_volume
 	audio_sfx_control.value = audio_settings.sfx_volume
 	audio_music_control.value = audio_settings.music_volume
+	
+	if OS.has_feature("mobile"):
+		controls_options.visible = false
+		screen_mode.visible = false
+		vsync_check_box.visible = false
 
 func _on_back_button_pressed() -> void:
 	self.visible = false
