@@ -4,6 +4,9 @@ extends CanvasLayer
 @onready var option_panel: Control = $OptionPanel
 @onready var pause_label: Label = $PauseIcon/Pause/MarginContainer2/Panel/Label
 @onready var dificulty_panel: Control = $DificultyPanel
+@onready var credit_panel: Control = $CreditPanel
+@onready var credit: MarginContainer = $Credit
+
 @export var mobile_pause_button: Button
 
 func _ready() -> void:
@@ -11,6 +14,8 @@ func _ready() -> void:
 	
 	option_panel.visible = false
 	pause_menu.visible = false
+	credit_panel.visible = false
+	credit.visible = false
 	
 	if OS.has_feature("mobile"):
 		mobile_pause_button.visible = true
@@ -46,6 +51,7 @@ func _process(_delta: float) -> void:
 
 func pause_game() -> void:
 	pause_menu.visible = true
+	credit.visible = true
 	option_panel.visible = false
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -55,6 +61,7 @@ func restart_game() -> void:
 	get_tree().paused = false
 	
 	pause_menu.visible = false
+	credit.visible = false
 	option_panel.visible = false
 	
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -71,3 +78,6 @@ func _on_exit_pressed() -> void:
 
 func _on_dificulty_pressed() -> void:
 	dificulty_panel.visible = true
+
+func _on_credit_button_pressed() -> void:
+	credit_panel.visible = true

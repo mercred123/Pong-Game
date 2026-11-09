@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c3iah45ngvf3x" path="res://Scenes/Components/option_panel.tscn" id="4_6fbih"]
 [ext_resource type="Script" uid="uid://lhtc5l6g2abr" path="res://Scripts/fps_label.gd" id="4_36asn"]
 [ext_resource type="Script" uid="uid://bnqbyjts7yvks" path="res://Scripts/dificulty_panel.gd" id="7_8jye8"]
+[ext_resource type="PackedScene" uid="uid://5nmoncbxq0xd" path="res://Scenes/Components/credit_panel.tscn" id="8_7gr8i"]
+[ext_resource type="Texture2D" uid="uid://c4cj7756a5rxb" path="res://Assets/Textures/barsHorizontal.png" id="9_5ep0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhunq"]
 atlas = ExtResource("2_t1xeu")
@@ -160,6 +162,16 @@ shadow_size = 5
 shadow_offset = Vector2(3.45, 5.675)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_484xk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4f5kr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ep0j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2avg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1a2va"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssfue"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1551471311 node_paths=PackedStringArray("mobile_pause_button")]
 process_mode = 3
@@ -481,9 +493,38 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_oersf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_484xk")
 text = "BACK"
 
+[node name="CreditPanel" parent="." unique_id=1465277551 instance=ExtResource("8_7gr8i")]
+visible = false
+
+[node name="Credit" type="MarginContainer" parent="." unique_id=297943730]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 27
+
+[node name="CreditButton" type="Button" parent="Credit" unique_id=1279277340]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4f5kr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ep0j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i2avg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1a2va")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ssfue")
+icon = ExtResource("9_5ep0j")
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/RESTART" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/OPTIONS" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/DIFICULTY" to="." method="_on_dificulty_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseMenu/CenterContainer/MainButtons/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
 [connection signal="item_selected" from="DificultyPanel/CenterContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer/OptionButton" to="DificultyPanel" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="DificultyPanel/CenterContainer/Panel/BACKButton/BackButton" to="DificultyPanel" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Credit/CreditButton" to="." method="_on_credit_button_pressed"]

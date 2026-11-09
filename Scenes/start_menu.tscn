@@ -5,6 +5,8 @@
 [ext_resource type="StyleBox" uid="uid://cvtprg5pni6o3" path="res://Assets/Themes/Buttons/new_style_box_flat.tres" id="3_a43kq"]
 [ext_resource type="PackedScene" uid="uid://c3iah45ngvf3x" path="res://Scenes/Components/option_panel.tscn" id="5_8u0lp"]
 [ext_resource type="AudioStream" uid="uid://dyf42w3rqdnt" path="res://Assets/SFX/Music/BlippyBits_Hush_Loop.ogg" id="5_626he"]
+[ext_resource type="Texture2D" uid="uid://c4cj7756a5rxb" path="res://Assets/Textures/barsHorizontal.png" id="6_i2i62"]
+[ext_resource type="PackedScene" uid="uid://5nmoncbxq0xd" path="res://Scenes/Components/credit_panel.tscn" id="7_lfskg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riqys"]
 bg_color = Color(1, 1, 1, 1)
@@ -63,6 +65,16 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 0.70980394, 0, 1, 0.35686275, 0.3568627
 gradient = SubResource("Gradient_a43kq")
 fill = 1
 fill_from = Vector2(0.5173913, 0.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riqys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sn0t7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6f8o3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr0ht"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1esiv"]
 
 [node name="StartMenu" type="Control" unique_id=2074906224]
 layout_mode = 3
@@ -919,6 +931,37 @@ rotation = 0.13264503
 visible = false
 layout_mode = 1
 
+[node name="Credit" type="MarginContainer" parent="." unique_id=1036695864]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 27
+
+[node name="CreditButton" type="Button" parent="Credit" unique_id=972198541]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_riqys")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sn0t7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6f8o3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qr0ht")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1esiv")
+icon = ExtResource("6_i2i62")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CreditPanel" parent="." unique_id=1465277551 instance=ExtResource("7_lfskg")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MainMenu/MainMenu/MainButtons/VBoxContainer/START" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainMenu/MainMenu/MainButtons/VBoxContainer/OPTIONS" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MainMenu/MainMenu/MainButtons/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Credit/CreditButton" to="." method="_on_credit_button_pressed"]
