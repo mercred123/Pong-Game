@@ -1,7 +1,11 @@
 
 # Pong Game – Godot
 
-A little 2D Pong game made with Godot Engine (the best engine, obviously).
+A classic Pong experience built with **Godot Engine** (the best engine, obviously).
+
+Simple to play, surprisingly addictive, and harder to master than it looks. Keep the ball in play, outsmart your opponent and try not to blame the game when you miss!
+
+## 📸 Screenshots
 
 <div align="center">
   <img src="Assets/REPO/Screenshot/01.png" width="48%" />
@@ -10,16 +14,31 @@ A little 2D Pong game made with Godot Engine (the best engine, obviously).
   <img src="Assets/REPO/Screenshot/04.png" width="48%" />
 </div>
 
-## Features
+## 📥 Download
 
-- Mobile and PC support
-- Modern settings menu
-- More features coming soon...
+Want to give it a try?
 
-## Support / Credits / License
+You can download the latest playable version from the [**Releases**](../../releases) section.
 
-Need help or found a bug? Feel free to open an issue!
+## ✨ Features
 
-Made by **MERCRED**.
+-  Mobile and PC support
+-  Modern settings menu
+-  Classic Pong gameplay
+-  More features coming soon!
 
-Licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+## 🚧 Coming Soon
+
+- Two-player mode
+
+## 🤝 Support & Feedback
+
+Found a bug, have a suggestion or need help?
+
+Feel free to [open an issue](../../issues)!
+
+## Credits & License
+
+Made with ❤️ by **MERCRED**.
+
+This project is licensed under the [MIT License](LICENSE).
