@@ -511,7 +511,7 @@ offset_right = 577.037
 offset_bottom = 510.17517
 rotation = -1.2758356
 scale = Vector2(0.83, 6.919)
-color = Color(0.03024185, 0.06854601, 0.2732043, 1)
+color = Color(0.03137255, 0.06666667, 0.27450982, 1)
 
 [node name="03" type="Control" parent="OtherBackground/Cave" unique_id=1272811082]
 layout_mode = 1
