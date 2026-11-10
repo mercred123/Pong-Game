@@ -4,10 +4,10 @@
 A little 2D Pong game made with Godot Engine (the best engine, obviously).
 
 <div align="center">
-  <img src="Assets/REPO/Screenshot/01.png" width="24%" />
-  <img src="Assets/REPO/Screenshot/02.png" width="24%" />
-  <img src="Assets/REPO/Screenshot/03.png" width="24%" />
-  <img src="Assets/REPO/Screenshot/04.png" width="24%" />
+  <img src="Assets/REPO/Screenshot/01.png" width="48%" />
+  <img src="Assets/REPO/Screenshot/02.png" width="48%" />
+  <img src="Assets/REPO/Screenshot/03.png" width="48%" />
+  <img src="Assets/REPO/Screenshot/04.png" width="48%" />
 </div>
 
 ## Features
